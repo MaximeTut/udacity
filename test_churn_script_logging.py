@@ -5,10 +5,10 @@ from pandas.api.types import is_numeric_dtype
 from pathlib import Path
 from churn_library import import_data, perform_eda, encoder_helper, perform_feature_engineering,\
 	classification_report_image, feature_importance_plot, train_models
-PATH  = r"C:\Users\maxim\OneDrive\Bureau\Udacity_MachineLearning_DevOps\Projet_1\data\bank_data.csv"
+PATH  = r"data\bank_data.csv"
 
 
-logging.basicConfig(filename=r'C:\Users\maxim\OneDrive\Bureau\Udacity_MachineLearning_DevOps\Projet_1\logs\churn_library.log',
+logging.basicConfig(filename=r'logs\churn_library.log',
                     filemode='a',
                     format='%(asctime)s,%(msecs)d %(name)s %(levelname)s %(message)s',
                     datefmt='%H:%M:%S',
@@ -64,7 +64,7 @@ def test_encoder_helper():
 	test encoder helper
 	'''
 	df = import_data(PATH)
-	encoder_helper(df)
+	df = encoder_helper(df)
 	
 	for x in df.columns:
 		try :
@@ -75,11 +75,14 @@ def test_encoder_helper():
 
 
 
-def test_perform_feature_engineering(perform_feature_engineering):
-	pass
+def test_perform_feature_engineering():
 	'''
 	test perform_feature_engineering
 	'''
+	df = import_data(PATH)
+	df = test_encoder_helper(df)
+	perform_feature_engineering(dataset)
+
 
 
 # def test_train_models(train_models):
@@ -89,8 +92,8 @@ def test_perform_feature_engineering(perform_feature_engineering):
 # 	'''
 
 
-# if __name__ == "__main__":
-# 	pass
+if __name__ == "__main__":
+	test_import_data()
 
 
 
